@@ -1,0 +1,541 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #4b0082);
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Enhanced birthday animation */
+.birthday-animation {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    transform-origin: top right;
+    animation: wobble 5s ease-in-out infinite;
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    50% { transform: rotate(0deg) scale(1.1); }
+    75% { transform: rotate(5deg) scale(1.05); }
+}
+
+.cake {
+    width: 100px;
+    height: 60px;
+    background: #ff69b4;
+    border-radius: 10px;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cake::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: #ff9ed6;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Candle and flame styles */
+.candle {
+    width: 10px;
+    height: 30px;
+    background: white;
+    position: absolute;
+    top: -30px;
+    border-radius: 5px 5px 0 0;
+}
+
+.candle:nth-child(1) { left: 20px; }
+.candle:nth-child(2) { left: 45px; }
+.candle:nth-child(3) { left: 70px; }
+
+.flame {
+    width: 15px;
+    height: 25px;
+    background: linear-gradient(to bottom, #ffff00, #ff9900);
+    position: absolute;
+    top: -25px;
+    left: -3px;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #ffa500, 0 0 20px #ff8c00, 0 0 30px #ff4500;
+    transform-origin: center bottom;
+    animation: flicker 1s ease-in-out infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { transform: scaleY(1) rotate(3deg); opacity: 1; }
+    25% { transform: scaleY(0.8) rotate(-4deg); opacity: 0.8; }
+    50% { transform: scaleY(1.2) rotate(5deg); opacity: 1; }
+    75% { transform: scaleY(0.9) rotate(-2deg); opacity: 0.9; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Enhanced balloon animations */
+.balloon-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    font-size: 3rem;
+    animation: float-up 15s linear infinite;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.balloon-1 { left: 10%; animation-delay: 0s; }
+.balloon-2 { left: 30%; animation-delay: 4s; }
+.balloon-3 { left: 50%; animation-delay: 2s; }
+.balloon-4 { left: 70%; animation-delay: 6s; }
+.balloon-5 { left: 90%; animation-delay: 3s; }
+.balloon-6 { left: 20%; animation-delay: 1s; animation-duration: 12s; font-size: 4rem; }
+
+/* Add more balloons */
+.balloon-7 { left: 5%; animation-delay: 8s; font-size: 2.5rem; }
+.balloon-8 { left: 15%; animation-delay: 10s; font-size: 3.5rem; }
+.balloon-9 { left: 85%; animation-delay: 7s; font-size: 2.8rem; }
+.balloon-10 { left: 65%; animation-delay: 9s; font-size: 3.2rem; }
+.balloon-11 { left: 45%; animation-delay: 12s; font-size: 4rem; }
+.balloon-12 { left: 35%; animation-delay: 14s; font-size: 3.7rem; }
+
+@keyframes float-up {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Fixed home section layout */
+.home-section {
+    min-height: 100vh;
+    padding: 120px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.fullscreen-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Enhanced birthday title */
+.birthday-title {
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 30px;
+    animation: title-entrance 2s ease-out;
+}
+
+@keyframes title-entrance {
+    0% { transform: translateY(-100px); opacity: 0; }
+    70% { transform: translateY(20px); opacity: 0.7; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.birthday-title h1 {
+    font-size: 5rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.6);
+    color: gold;
+    padding: 20px 40px;
+    border-radius: 20px;
+    animation: pulse 2s ease-in-out infinite, color-change 8s linear infinite;
+    letter-spacing: 3px;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes color-change {
+    0%, 100% { color: gold; }
+    25% { color: #ff69b4; }
+    50% { color: #00bfff; }
+    75% { color: #9932cc; }
+}
+
+/* Enhanced names section */
+.names {
+    text-align: center;
+    z-index: 1;
+    padding: 30px 50px;
+    border-radius: 20px;
+    margin-top: 20px;
+    animation: names-entrance 3s ease-out;
+}
+
+@keyframes names-entrance {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.names h1 {
+    font-size: 6rem;
+    margin: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 105, 180, 0.8);
+    letter-spacing: 4px;
+}
+
+.radhika { 
+    color: #ff69b4; 
+    animation: glow-pink 3s ease-in-out infinite;
+}
+
+.hariom { 
+    color: #4b0082; 
+    animation: glow-purple 3s ease-in-out infinite;
+}
+
+.and { 
+    color: gold !important; 
+    font-size: 4rem !important;
+    animation: pulse-and 2s ease-in-out infinite;
+}
+
+@keyframes glow-pink {
+    0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4; }
+    50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 50px #ff69b4; }
+}
+
+@keyframes glow-purple {
+    0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4b0082; }
+    50% { text-shadow: 0 0 20px #fff, 0 0 30px #4b0082, 0 0 40px #4b0082, 0 0 50px #4b0082; }
+}
+
+@keyframes pulse-and {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Enhanced greeting section - position at bottom */
+.greeting {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    z-index: 10;
+    animation: greeting-entrance 2s ease-in-out, float-greeting 4s ease-in-out infinite;
+}
+
+@keyframes greeting-entrance {
+    0% { transform: translate(-50%, 100px); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes float-greeting {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
+}
+
+.greeting h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.greeting p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.birthday-wish {
+    margin-top: 15px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffd54f;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.emoji {
+    font-size: 1.4em;
+    animation: bounce 1.5s infinite;
+    display: inline-block;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Enhanced confetti */
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    top: -15px;
+    z-index: 10;
+    animation: confetti-fall linear forwards;
+    pointer-events: none;
+}
+
+.confetti:nth-child(2n) { 
+    background: linear-gradient(45deg, #ff69b4, #ff1493); 
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.confetti:nth-child(3n) { 
+    background: linear-gradient(-45deg, #4b0082, #9400d3); 
+    border-radius: 50%;
+}
+
+.confetti:nth-child(4n) { 
+    background: linear-gradient(135deg, #00bfff, #1e90ff); 
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.confetti:nth-child(5n) { 
+    background: linear-gradient(-135deg, #ffd700, #ffa500); 
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* Sparkles styles */
+.sparkles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: transparent;
+    pointer-events: none;
+    animation: sparkle 4s linear infinite;
+}
+
+.sparkle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    background: linear-gradient(to right, #fffacd, #ffd700);
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Rainbow text effect */
+.rainbow-text {
+    background: linear-gradient(90deg, 
+        #ff0000, #ff9900, #ffff00, 
+        #00ff00, #00ffff, #0000ff, 
+        #9900ff, #ff00ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rainbow 8s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Fix transitions for 3D effects */
+.names, .birthday-title {
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .birthday-title h1 {
+        font-size: 3rem;
+        padding: 15px 25px;
+    }
+    
+    .names h1 {
+        font-size: 3.8rem;
+        margin: 10px;
+    }
+    
+    .and {
+        font-size: 2.8rem !important;
+    }
+    
+    .greeting h2 {
+        font-size: 2rem;
+    }
+    
+    .greeting p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .home-section {
+        padding: 80px 20px;
+    }
+    
+    .birthday-title {
+        margin-bottom: 15px;
+    }
+    
+    .names {
+        padding: 20px 30px;
+    }
+    
+    .names h1 {
+        font-size: 4.5rem;
+        margin: 10px;
+    }
+}
+
+/* Hide unused elements */
+.navigation,
+.nav-btn,
+.section,
+.swiper,
+.swiper-slide,
+.final-messages,
+.message-card {
+    display: none;
+}
+
+/* Add sprinkles animation */
+.sprinkles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes sprinkle-fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+
+.sprinkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    border-radius: 50%;
+    animation: sprinkle-fall linear infinite;
+    pointer-events: none;
+}
+
+.sprinkle:nth-child(2n) {
+    background: #ff1493;
+    width: 8px;
+    height: 8px;
+}
+
+.sprinkle:nth-child(3n) {
+    background: #ffd700;
+    width: 6px;
+    height: 6px;
+}
+
+.sprinkle:nth-child(4n) {
+    background: #00bfff;
+    width: 4px;
+    height: 4px;
+}
+
+.sprinkle:nth-child(5n) {
+    background: #7fff00;
+    width: 5px;
+    height: 5px;
+}
+
+.sprinkle:nth-child(6n) {
+    background: #ff4500;
+    width: 7px;
+    height: 7px;
+}
+
+.sprinkle:nth-child(7n) {
+    background: #9400d3;
+    width: 9px;
+    height: 9px;
+} 
